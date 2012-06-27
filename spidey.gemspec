@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/joeyAghion/spidey"
   s.summary     = %q{A loose framework for crawling and scraping web sites.}
   s.description = %q{A loose framework for crawling and scraping web sites.}
+  s.license     = 'MIT'
   
   s.rubyforge_project = "spidey"
   

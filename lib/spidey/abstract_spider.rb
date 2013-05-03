@@ -68,7 +68,7 @@ module Spidey
     # Override this for custom error-handling.
     def add_error(attrs)
       @errors << attrs
-      Spidey.logger.info "Error on #{attrs[:url]}. #{attrs[:error].class}: #{attrs[:error].message}"
+      Spidey.logger.error "Error on #{attrs[:url]}. #{attrs[:error].class}: #{attrs[:error].message}"
     end
 
     def resolve_url(href, page)

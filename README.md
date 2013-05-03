@@ -55,6 +55,12 @@ By default, the lists of URLs being crawled, results scraped, and errors encount
 Add the [spidey-mongo](https://github.com/joeyAghion/spidey-mongo) gem and include `Spidey::Strategies::Mongo` in your spider to instead use MongoDB to persist these data. [See the docs](https://github.com/joeyAghion/spidey-mongo) for more information. Or, you can implement your own strategy by overriding the appropriate methods from `AbstractSpider`.
 
 
+Logging
+-------
+
+You may set `Spidey.logger` to a logger of your choosing. When used in a Rails environment, the logger defaults to the Rails logger. Otherwise, it's directed to STDOUT.
+
+
 Contributing
 ------------
 

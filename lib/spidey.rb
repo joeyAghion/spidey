@@ -8,3 +8,5 @@ module Spidey
 end
 
 Spidey.logger = Logger.new(STDOUT)
+
+require 'spidey/railtie' if defined?(::Rails)

@@ -1,4 +1,4 @@
-Spidey
+Spidey [![Build Status](https://travis-ci.org/joeyAghion/spidey.png?branch=master)](https://travis-ci.org/joeyAghion/spidey)
 ======
 
 Spidey provides a bare-bones framework for crawling and scraping web sites. Its goal is to keep boilerplate scraping logic out of your code.
@@ -74,4 +74,4 @@ To Do
 
 Copyright
 ---------
-Copyright (c) 2012 Joey Aghion, Art.sy Inc. See [LICENSE.txt](LICENSE.txt) for further details.
+Copyright (c) 2012 [Joey Aghion](http://halfamind.aghion.com), [Artsy Inc](http://artsy.net). See [LICENSE.txt](LICENSE.txt) for further details.

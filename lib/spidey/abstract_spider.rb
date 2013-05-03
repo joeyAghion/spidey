@@ -3,7 +3,7 @@ require 'mechanize'
 
 module Spidey
   class AbstractSpider
-    attr_accessor :urls, :handlers, :results, :request_interval, :verbose, :errors
+    attr_accessor :urls, :handlers, :results, :request_interval, :errors
 
     DEFAULT_REQUEST_INTERVAL = 3  # seconds
 
@@ -14,14 +14,12 @@ module Spidey
 
     # Accepts:
     #   request_interval: number of seconds to wait between requests (default: 3)
-    #   verbose: prints debugging and progress information if true
     def initialize(attrs = {})
       @urls = []
       @handlers = {}
       @results = []
       self.class.start_urls.each { |url| handle url, *self.class.handlers[url] }
       @request_interval = attrs[:request_interval] || DEFAULT_REQUEST_INTERVAL
-      @verbose = !!attrs[:verbose]
     end
 
     # Iterates through URLs queued for handling, including any that are added in the course of crawling. Accepts:
@@ -33,7 +31,7 @@ module Spidey
         break if options[:max_urls] && i >= options[:max_urls]
         begin
           page = agent.get(url)
-          $stderr.puts "Handling #{url.inspect}" if verbose
+          Spidey.logger.info "Handling #{url.inspect}"
           send handler, page, default_data
         rescue => ex
           add_error url: url, handler: handler, error: ex
@@ -60,17 +58,17 @@ module Spidey
         yield url, handlers[url].first, handlers[url].last
       end
     end
-    
+
     # Override this for custom result storage.
     def record(data)
       results << data
-      $stderr.puts "Recording #{data.inspect}" if verbose
+      Spidey.logger.info "Recording #{data.inspect}"
     end
-    
+
     # Override this for custom error-handling.
     def add_error(attrs)
       @errors << attrs
-      $stderr.puts "Error on #{attrs[:url]}. #{attrs[:error].class}: #{attrs[:error].message}" if verbose
+      Spidey.logger.info "Error on #{attrs[:url]}. #{attrs[:error].class}: #{attrs[:error].message}"
     end
 
     def resolve_url(href, page)
@@ -98,5 +96,5 @@ module Spidey
     end
 
   end
-  
+
 end

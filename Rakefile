@@ -1,7 +1,17 @@
-require "bundler/gem_tasks"
+require 'rubygems'
+require 'bundler'
+Bundler.setup :default, :test, :development
+
+Bundler::GemHelper.install_tasks
 
 require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.pattern = 'spec/**/*_spec.rb'
+end
 
-task :test => :spec
-task :default => :spec
+task :spec
+
+require 'rubocop/rake_task'
+RuboCop::RakeTask.new
+
+task default: [:rubocop, :spec]

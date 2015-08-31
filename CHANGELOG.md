@@ -1,6 +1,7 @@
 Next Release
 ============
 
+* Fix: works on Rubinius - [@dblock](https://github.com/dblock).
 * Added RuboCop - [@dblock](https://github.com/dblock).
 * Your contribution here.
 

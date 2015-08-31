@@ -54,8 +54,11 @@ module Spidey
     # Override this for custom storage or prioritization of crawled URLs.
     # Iterates through URL queue, yielding the URL, handler, and default data.
     def each_url(&_block)
-      urls.each do |url|
+      index = 0
+      while index < urls.count # urls grows dynamically, don't use &:each
+        url = urls[index]
         yield url, handlers[url].first, handlers[url].last
+        index += 1
       end
     end
 

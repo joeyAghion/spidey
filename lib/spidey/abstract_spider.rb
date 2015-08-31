@@ -5,7 +5,7 @@ module Spidey
   class AbstractSpider
     attr_accessor :urls, :handlers, :results, :request_interval, :errors
 
-    DEFAULT_REQUEST_INTERVAL = 3  # seconds
+    DEFAULT_REQUEST_INTERVAL = 3 # seconds
 
     def self.handle(url, handler, default_data = {})
       start_urls << url
@@ -41,7 +41,7 @@ module Spidey
       end
     end
 
-  protected
+    protected
 
     # Override this for custom queueing of crawled URLs.
     def handle(url, handler, default_data = {})
@@ -85,7 +85,7 @@ module Spidey
       str.gsub(/\p{Space}/, ' ').strip.squeeze(' ')
     end
 
-  private
+    private
 
     def agent
       @agent ||= Mechanize.new
@@ -98,7 +98,5 @@ module Spidey
     def self.handlers
       @handlers ||= {}
     end
-
   end
-
 end

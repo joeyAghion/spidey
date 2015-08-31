@@ -1,6 +1,6 @@
-require "logger"
-require "spidey/version"
-require "spidey/abstract_spider"
+require 'logger'
+require 'spidey/version'
+require 'spidey/abstract_spider'
 
 module Spidey
   extend self
